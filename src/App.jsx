@@ -13,6 +13,7 @@ const styles = `
     height: 100%;
     overflow-x: hidden;
     scroll-bar-width: none; 
+    width: 100%;
   }
 
   body {
@@ -29,15 +30,14 @@ const styles = `
     min-height: 100vh;
     min-height: 100dvh; /* Dynamic viewport height for mobile */
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
-    transition: all 0.3s ease;
-    margin-left: 6rem; 
+    transition: all 0.3s ease; 
     display: flex;
     flex-direction: column; 
-    width: calc(100% - 6rem);
+    width: 100%;
   }
 
   .mlb-app.light {
-    background: linear-gradient(135deg, #f0f9ff 0%, #ffffff 50%, #f8fafc 100%);
+    background: linear-gradient(135deg, #f8f9fa, #d9e6f3ff);
     color: #1f2937;
   }
 
@@ -51,14 +51,14 @@ const styles = `
     top: 0;
     z-index: 50;
     backdrop-filter: blur(20px);
-    border-bottom: 1px solid rgba(190, 13, 63, 1);
+    border-bottom: 1px solid #bf0d3d;
     padding: 1rem;
     width: 100%;
   }
 
   .header.light {
-    background: rgba(255, 255, 255, 0.8);
-    border-color: rgba(0, 0, 0, 0.1);
+    background: #f7fafcff;
+    border-color: #6ba8f8ff;
   }
 
   .header.dark {
@@ -204,19 +204,20 @@ const styles = `
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
+    width: 310px;
   }
 
   .game-card.light {
-    background: rgba(255, 255, 255, 0.7);
-    border-color: rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(59, 131, 246, 0.39);
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
   }
 
   .game-card.light:hover {
-    background: rgba(255, 255, 255, 0.9);
+    background: rgba(255, 251, 251, 0.9);
     box-shadow: 0 10px 25px -3px rgba(0, 0, 0, 0.1);
     transform: translateY(-2px);
-    border-color: rgba(59, 130, 246, 0.3);
+    border: 1px solid rgba(220, 38, 38, 0.4);
   }
 
   .game-card.dark {
@@ -233,7 +234,7 @@ const styles = `
   }
 
   .game-card.live {
-    animation: pulse 2s infinite;
+    animation: pulse 3s infinite;
   }
 
   .game-card.live.light {
@@ -277,7 +278,7 @@ const styles = `
     font-size: 0.875rem;
     margin-top: 1rem;
     letter-spacing: 0.025em;
-    margin-right: 0.8rem;
+    margin-right: 1.3rem;
   }
 
   .game-status.live {
@@ -285,11 +286,11 @@ const styles = `
   }
 
   .game-status.scheduled {
-    color: #3b82f6;
+    color: #ef4444;
   }
 
   .game-status.final {
-    color: #6b7280;
+    color: #ef4444;
   }
 
   .teams-container {
@@ -322,12 +323,24 @@ const styles = `
     font-weight: 600;
     font-size: 0.875rem;
     letter-spacing: 0.025em;
+    color: #0252bb;
+  }
+
+  .game-card.dark .team-abbr {
+    color: #d1d5db;
+    font-weight: 600;
   }
 
   .team-score {
     font-weight: 700;
     font-size: 1.125rem;
     tabular-nums: true;
+    color: #0252bb;
+  }
+
+  .game-card.dark .team-score {
+    color: #f9fafb;
+    font-weight: 700;
   }
 
   .loading-container {
@@ -386,8 +399,8 @@ const styles = `
   }
 
   .bases-outs-svg {
-    width: 74px;
-    height: 69px;
+    width: 84px;
+    height: 79px;
   }
 
   .bases-outs-svg .out-circle {
@@ -396,42 +409,42 @@ const styles = `
 
   .light .bases-outs-svg .out-circle {
     fill: #f9fafb;
-    stroke: #d1d5db;
+    stroke: #0b4796ff;
   }
 
   .light .bases-outs-svg .out-circle.filled {
-    fill: #6b7280;
-    stroke: #6b7280;
+    fill: #0b4796ff;
+    stroke: #0b4796ff;
   }
 
   .dark .bases-outs-svg .out-circle {
-    fill: #374151;
-    stroke: #6b7280;
+    fill: transparent;
+    stroke: #d9e6f3ff;
   }
 
   .dark .bases-outs-svg .out-circle.filled {
-    fill: #9ca3af;
-    stroke: #9ca3af;
+    fill: #d9e6f3ff;
+    stroke: #d9e6f3ff;
   }
 
   .light .bases-outs-svg .base {
-    fill: #fef3c7;
-    stroke: #d97706;
+    fill: #f2cfd8;
+    stroke: #bf0d3d;
   }
 
   .light .bases-outs-svg .base.occupied {
-    fill: #fbbf24;
-    stroke: #d97706;
+    fill: #730825;
+    stroke: #bf0d3d;
   }
 
   .dark .bases-outs-svg .base {
-    fill: #451a03;
-    stroke: #a16207;
+    fill: transparent;
+    stroke: #bf0d3d;
   }
 
   .dark .bases-outs-svg .base.occupied {
-    fill: #f59e0b;
-    stroke: #d97706;
+    fill: #bf0d3d;
+    stroke: #bf0d3d;
   }
 
   /* Footer Styles */
@@ -444,7 +457,7 @@ const styles = `
   }
 
   .footer.light {
-    background: rgba(255, 255, 255, 0.8);
+    background: #f7fafc;
     border-color: rgba(0, 0, 0, 0.1);
   }
 
@@ -557,6 +570,38 @@ const styles = `
     font-weight: 500;
   }
 
+  /* Default: hidden (mobile/tablet) */
+.nav-links {
+  display: none;
+}
+
+/* Desktop only (≥1024px) */
+@media (min-width: 768px) {
+  .nav-links {
+    display: flex;
+    gap: 2rem; /* space between links */
+    align-items: center;
+  }
+
+  .nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+
+  .nav-link.light {
+    color: #1f2937; /* gray-800 */
+  }
+
+  .nav-link.dark {
+    color: #f9fafb; /* gray-50 */
+  }
+
+  .nav-link:hover {
+    color: #3b82f6; /* blue-500 hover */
+  }
+}
+
   @keyframes spin {
     to {
       transform: rotate(360deg);
@@ -585,8 +630,10 @@ const styles = `
   @media (max-width: 767px) {
     html, body, #root {
       height: 100vh;
-      height: 100dvh; /* Dynamic viewport height */
+      height: 100dvh;
       overflow-x: hidden;
+      scroll-bar-width: none;
+      width: 100%;
     }
 
     .mlb-app {
@@ -686,8 +733,9 @@ const styles = `
     }
 
     .game-card {
-      width: 100%;
-      max-width: 350px;
+      flex: 1 1 auto;
+      width: clamp(330px, 42vw, 380px);
+      margin: 0.5rem; 
     }
 
     .header-content {
@@ -747,7 +795,7 @@ const styles = `
 
     .game-card {
       width: 100%;
-      max-width: 280px;
+      max-width: 380px;
     }
   }
 
@@ -1146,6 +1194,14 @@ const MLBScoreboard = () => {
                 <img src="assets/MLB-EXT.png" alt="MLB Logo" />
               </div>
             </div>
+
+             {/* Navigation */}
+            <nav className="nav-links">
+              <a href="#home" className={`nav-link ${darkMode ? 'dark' : 'light'}`}>Home</a>
+              <a href="#standings" className={`nav-link ${darkMode ? 'dark' : 'light'}`}>Standings</a>
+              <a href="#stats" className={`nav-link ${darkMode ? 'dark' : 'light'}`}>Stats</a>
+              <a href="#players" className={`nav-link ${darkMode ? 'dark' : 'light'}`}>Players</a>
+            </nav>
 
             {/* Controls */}
             <div className="controls">
