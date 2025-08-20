@@ -658,6 +658,7 @@
 .score-display {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 2rem;
   margin-bottom: 1.5rem;
   padding: 1.5rem;
@@ -675,26 +676,50 @@
   border: 1px solid rgba(203, 213, 225, 0.5);
 }
 
-.team-score {
+.team-section-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.team-logo-small {
+  width: 50px;
+  height: 50px;
+}
+
+.team-record-score {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.scores-container {
   display: flex;
   align-items: center;
   gap: 1rem;
 }
 
-.team-logo-small {
-  width: 40px;
-  height: 40px;
-}
-
-.team-name {
-  font-weight: 600;
-  font-size: 1.125rem;
-}
-
 .score {
-  font-size: 2rem;
+  font-size: 3rem;
   font-weight: bold;
   color: #3b82f6;
+  line-height: 1;
+}
+
+.away-score {
+  text-align: right;
+}
+
+.home-score {
+  text-align: left;
+}
+
+.score-separator {
+  font-size: 2rem;
+  font-weight: bold;
+  opacity: 0.5;
+  line-height: 1;
 }
 
 /* Tabs */
@@ -1026,7 +1051,8 @@
   text-align: center;
   padding: 1rem;
   border-radius: 0.5rem;
-  min-width: 200px;
+  width: 200px;
+  max-width: 200px;
 }
 
 .dark .current-player {
@@ -1049,6 +1075,13 @@
 .current-player p {
   margin-bottom: 0.75rem;
   font-weight: 600;
+}
+
+.player-name-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 100%;
 }
 
 .player-stats {
@@ -1095,6 +1128,9 @@
   margin-bottom: 2rem;
   padding: 1rem;
   border-radius: 0.5rem;
+  max-width: 200px;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .dark .pitcher-section {
@@ -1463,8 +1499,22 @@
   }
   
   .score-display {
-    flex-direction: column;
+    flex-direction: row;
     gap: 1rem;
+    padding: 1rem;
+  }
+  
+  .scores-container {
+    gap: 0.5rem;
+  }
+  
+  .score {
+    font-size: 2rem;
+  }
+  
+  .team-logo-small {
+    width: 40px;
+    height: 40px;
   }
   
   .tabs-container {
@@ -1488,6 +1538,12 @@
   
   .inning-display {
     order: 0;
+  }
+  
+  .current-player {
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
   }
   
   .lineups-grid {
@@ -1528,18 +1584,23 @@
 }
 
 @media (max-width: 480px) {
+  .score-display {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+  
+  .score {
+    font-size: 1.75rem;
+  }
+  
   .team-logo-large {
     width: 60px;
     height: 60px;
   }
   
   .team-logo-small {
-    width: 30px;
-    height: 30px;
-  }
-  
-  .score {
-    font-size: 1.5rem;
+    width: 35px;
+    height: 35px;
   }
   
   .pitcher-image,
@@ -1558,9 +1619,14 @@
     height: 40px;
   }
   
-  .bases-outs-svg {
+  .bases-outs-svg-box {
     width: 100px;
     height: 133px;
+  }
+  
+  .current-player {
+    width: 100%;
+    max-width: 250px;
   }
 }
 
