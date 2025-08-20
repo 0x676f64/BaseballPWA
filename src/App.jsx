@@ -82,8 +82,8 @@ const styles = `
   }
 
   .logo img {
-    width: 8rem;
-    height: 5rem;
+    width: 9rem;
+    height: 4rem;
     justify-content: flex-start;
   }
 
@@ -908,42 +908,42 @@ const MLBScoreboard = () => {
 
   // Fetch live game details
   const fetchGameDetails = async (gamePk) => {
-    try {
-      const response = await fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`);
-      const data = await response.json();
-
-      if (data?.liveData?.linescore) {
-        const linescore = data.liveData.linescore;
-        const inningHalf = linescore.inningHalf ? (linescore.inningHalf === "Top" ? "TOP" : "BOT") : "";
-        const currentInning = linescore.currentInning || "";
-        
-        // Get additional live data for scorebug
-        const plays = data.liveData?.plays;
-        const count = plays?.currentPlay?.count || { balls: 0, strikes: 0, outs: 0 };
-        const runners = plays?.currentPlay?.runners || [];
-        
-        // Determine base occupancy
-        const basesOccupied = {
-          first: runners.some(r => r.movement?.end === "1B"),
-          second: runners.some(r => r.movement?.end === "2B"), 
-          third: runners.some(r => r.movement?.end === "3B")
-        };
-
-        return {
-          inning: `${inningHalf} ${currentInning}`.trim(),
-          count: count,
-          bases: basesOccupied
-        };
-      }
-    } catch (error) {
-      console.error("Error fetching game details:", error);
+  try {
+    const response = await fetch(`https://statsapi.mlb.com/api/v1.1/game/${gamePk}/feed/live`);
+    const data = await response.json();
+    
+    if (data?.liveData?.linescore) {
+      const linescore = data.liveData.linescore;
+      const inningHalf = linescore.inningHalf ? (linescore.inningHalf === "Top" ? "TOP" : "BOT") : "";
+      const currentInning = linescore.currentInning || "";
+      
+      // Get additional live data for scorebug
+      const plays = data.liveData?.plays;
+      const count = plays?.currentPlay?.count || { balls: 0, strikes: 0, outs: 0 };
+      
+      // Get base occupancy from linescore.offense
+      const offense = linescore.offense || {};
+      const basesOccupied = {
+        first: !!offense.first,   // Check if first base data exists
+        second: !!offense.second, // Check if second base data exists  
+        third: !!offense.third    // Check if third base data exists
+      };
+      
+      return {
+        inning: `${inningHalf} ${currentInning}`.trim(),
+        count: count,
+        bases: basesOccupied
+      };
     }
-    return {
-      inning: "Live",
-      count: { balls: 0, strikes: 0, outs: 0 },
-      bases: { first: false, second: false, third: false }
-    };
+  } catch (error) {
+    console.error("Error fetching game details:", error);
+  }
+  return {
+    inning: "Live",
+    count: { balls: 0, strikes: 0, outs: 0 },
+    bases: { first: false, second: false, third: false }
   };
+};
 
   // Fetch games data
   const fetchGameData = useCallback(async (date, showRefresh = false) => {
@@ -1191,7 +1191,7 @@ const MLBScoreboard = () => {
             {/* Logo */}
             <div className="logo-section">
               <div className="logo">
-                <img src="assets/MLB-EXT.png" alt="MLB Logo" />
+                <img src="assets/Major_League_Baseball_logo.svg" alt="MLB Logo" />
               </div>
             </div>
 
