@@ -304,14 +304,24 @@ const GameBox = ({ darkMode }) => {
               className="team-logo-large"
             />
             <div className="team-record">{awayRecord}</div>
-            {linescore?.inningHalf === 'Top' && (
+            {linescore?.inningHalf === 'Top' ? (
               <div className="current-player">
                 <h4>Batting</h4>
-                <p>{currentBatter?.fullName}</p>
+                <p className="player-name-truncate">{currentBatter?.fullName}</p>
                 <div className="player-stats">
                   <span>AVG: {formatAvg(currentBatter?.stats?.batting?.avg)}</span>
                   <span>OPS: {currentBatter?.stats?.batting?.ops?.toFixed(3) || '.000'}</span>
                   <span>HR: {currentBatter?.stats?.batting?.homeRuns || 0}</span>
+                </div>
+              </div>
+            ) : (
+              <div className="current-player">
+                <h4>Pitching</h4>
+                <p className="player-name-truncate">{currentPitcher?.fullName}</p>
+                <div className="player-stats">
+                  <span>ERA: {formatERA(currentPitcher?.stats?.pitching?.era)}</span>
+                  <span>IP: {currentPitcher?.stats?.pitching?.inningsPitched || '0.0'}</span>
+                  <span>K: {currentPitcher?.stats?.pitching?.strikeOuts || 0}</span>
                 </div>
               </div>
             )}
@@ -328,28 +338,27 @@ const GameBox = ({ darkMode }) => {
               className="team-logo-large"
             />
             <div className="team-record">{homeRecord}</div>
-            {linescore?.inningHalf === 'Bottom' && (
+            {linescore?.inningHalf === 'Bottom' ? (
               <div className="current-player">
                 <h4>Batting</h4>
-                <p>{currentBatter?.fullName}</p>
+                <p className="player-name-truncate">{currentBatter?.fullName}</p>
                 <div className="player-stats">
                   <span>AVG: {formatAvg(currentBatter?.stats?.batting?.avg)}</span>
                   <span>OPS: {currentBatter?.stats?.batting?.ops?.toFixed(3) || '.000'}</span>
                   <span>HR: {currentBatter?.stats?.batting?.homeRuns || 0}</span>
                 </div>
               </div>
+            ) : (
+              <div className="current-player">
+                <h4>Pitching</h4>
+                <p className="player-name-truncate">{currentPitcher?.fullName}</p>
+                <div className="player-stats">
+                  <span>ERA: {formatERA(currentPitcher?.stats?.pitching?.era)}</span>
+                  <span>IP: {currentPitcher?.stats?.pitching?.inningsPitched || '0.0'}</span>
+                  <span>K: {currentPitcher?.stats?.pitching?.strikeOuts || 0}</span>
+                </div>
+              </div>
             )}
-          </div>
-        </div>
-
-        {/* Pitcher Info */}
-        <div className="pitcher-section">
-          <h4>Pitching</h4>
-          <p>{currentPitcher?.fullName}</p>
-          <div className="player-stats">
-            <span>ERA: {formatERA(currentPitcher?.stats?.pitching?.era)}</span>
-            <span>IP: {currentPitcher?.stats?.pitching?.inningsPitched || '0.0'}</span>
-            <span>K: {currentPitcher?.stats?.pitching?.strikeOuts || 0}</span>
           </div>
         </div>
 
@@ -570,24 +579,31 @@ const GameBox = ({ darkMode }) => {
       {/* Score display for live/final games */}
       {(isLive || isPostGame) && (
         <div className="score-display">
-          <div className="team-score">
+          {/* Away Team */}
+          <div className="team-section-score">
             <img 
               src={getTeamLogoUrl(gameData.gameData?.teams?.away?.id, darkMode)} 
               alt={gameData.gameData?.teams?.away?.name}
               className="team-logo-small"
             />
-            <span className="team-name">{gameData.gameData?.teams?.away?.abbreviation}</span>
-            <span className="score">{gameData.liveData?.linescore?.teams?.away?.runs || 0}</span>
+            <div className="team-record-score">{gameData.gameData?.teams?.away?.record?.wins}-{gameData.gameData?.teams?.away?.record?.losses}</div>
           </div>
           
-          <div className="team-score">
+          {/* Scores */}
+          <div className="scores-container">
+            <span className="score away-score">{gameData.liveData?.linescore?.teams?.away?.runs || 0}</span>
+            <span className="score-separator">-</span>
+            <span className="score home-score">{gameData.liveData?.linescore?.teams?.home?.runs || 0}</span>
+          </div>
+          
+          {/* Home Team */}
+          <div className="team-section-score">
             <img 
               src={getTeamLogoUrl(gameData.gameData?.teams?.home?.id, darkMode)} 
               alt={gameData.gameData?.teams?.home?.name}
               className="team-logo-small"
             />
-            <span className="team-name">{gameData.gameData?.teams?.home?.abbreviation}</span>
-            <span className="score">{gameData.liveData?.linescore?.teams?.home?.runs || 0}</span>
+            <div className="team-record-score">{gameData.gameData?.teams?.home?.record?.wins}-{gameData.gameData?.teams?.home?.record?.losses}</div>
           </div>
         </div>
       )}
