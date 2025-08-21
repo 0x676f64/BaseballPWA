@@ -573,7 +573,7 @@
 }
 
 .page-container.dark {
-  background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+  background: #051e43;
   color: #e2e8f0;
 }
 
@@ -594,7 +594,7 @@
 }
 
 .dark .gamebox-header {
-  background: rgba(30, 41, 59, 0.7);
+  background: #031228;
   border: 1px solid rgba(71, 85, 105, 0.3);
 }
 
@@ -617,7 +617,7 @@
 }
 
 .dark .back-button {
-  background: rgba(59, 130, 246, 0.2);
+  background: #081b38;
   color: #93c5fd;
   border: 1px solid rgba(59, 130, 246, 0.3);
 }
@@ -667,7 +667,7 @@
 }
 
 .dark .score-display {
-  background: rgba(30, 41, 59, 0.7);
+  background: #031228;
   border: 1px solid rgba(71, 85, 105, 0.3);
 }
 
@@ -684,8 +684,8 @@
 }
 
 .team-logo-small {
-  width: 50px;
-  height: 50px;
+  width: 70px;
+  height: 70px;
 }
 
 .team-record-score {
@@ -701,10 +701,14 @@
 }
 
 .score {
-  font-size: 3rem;
+  font-size: 1.5rem;
   font-weight: bold;
   color: #3b82f6;
   line-height: 1;
+}
+
+.dark .score {
+  color: #ee1552d2;
 }
 
 .away-score {
@@ -733,7 +737,7 @@
 }
 
 .dark .tabs-container {
-  background: rgba(30, 41, 59, 0.7);
+  background: #031228;
   border: 1px solid rgba(71, 85, 105, 0.3);
 }
 
@@ -755,7 +759,7 @@
 
 .dark .tab {
   background: transparent;
-  color: #94a3b8;
+  color: #ffffff;
 }
 
 .dark .tab:hover {
@@ -764,9 +768,8 @@
 }
 
 .dark .tab.active {
-  background: #3b82f6;
+  background: #bf0d3e;
   color: white;
-  box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
 }
 
 .light .tab {
@@ -793,7 +796,7 @@
 }
 
 .dark .tab-content {
-  background: rgba(30, 41, 59, 0.7);
+  background: #031228;
   border: 1px solid rgba(71, 85, 105, 0.3);
 }
 
@@ -1056,8 +1059,8 @@
 }
 
 .dark .current-player {
-  background: rgba(51, 65, 85, 0.5);
-  border: 1px solid rgba(71, 85, 105, 0.3);
+  background: linear-gradient(105deg, #051e43 0%, #051e43 50%, #000000 100%);
+  border: 1px solid #f91f5d88;
 }
 
 .light .current-player {
@@ -1069,7 +1072,8 @@
   margin-bottom: 0.5rem;
   font-size: 0.875rem;
   font-weight: 600;
-  color: #3b82f6;
+  color: #bf0d3e;
+  font-style: italic;
 }
 
 .current-player p {
@@ -1108,8 +1112,8 @@
 }
 
 .dark .inning-display {
-  background: rgba(59, 130, 246, 0.2);
-  border: 2px solid rgba(59, 130, 246, 0.3);
+  background: linear-gradient(135deg, #051e43 0%, #051e43 50%, #000000 100%);
+  border: 2px solid #e9124fc3;
 }
 
 .light .inning-display {
@@ -1120,7 +1124,7 @@
 .inning-text {
   font-size: 1.5rem;
   font-weight: bold;
-  color: #3b82f6;
+  color: #bf0d3e;
 }
 
 .pitcher-section {
