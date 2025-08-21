@@ -68,7 +68,7 @@ const GameBox = ({ darkMode }) => {
 
   // Get player headshot URL
   const getPlayerHeadshotUrl = (playerId) => {
-    return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_213,q_auto:best/v1/people/${playerId}/headshot/67/current`;
+    return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_100,h_100,c_fill,q_auto:best/v1/people/${playerId}/headshot/67/current`;
   };
 
   // Format batting average
@@ -370,12 +370,11 @@ const GameBox = ({ darkMode }) => {
         {/* Current Pitch */}
         {lastPitch && (
           <div className="current-pitch">
-            <h4>Last Pitch</h4>
             <div className="pitch-info">
-              <span>{currentPitcher?.fullName?.split(' ').map((name, i) => i === 0 ? name[0] + '.' : name).join(' ')}</span>
-              <span>{lastPitch.details?.type?.description || 'Unknown'}</span>
-              <span>{lastPitch.pitchData?.startSpeed ? `${lastPitch.pitchData.startSpeed.toFixed(1)} mph` : '--'}</span>
-              <span>{lastPitch.pitchData?.breaks?.spinRate ? `${lastPitch.pitchData.breaks.spinRate} rpm` : '--'}</span>
+              <span>Pitcher:  {currentPitcher?.fullName?.split(' ').map((name, i) => i === 0 ? name[0] + '.' : name).join(' ')}</span>
+              <span>Pitch:  {lastPitch.details?.type?.description || 'Unknown'}</span>
+              <span>Velocity:  {lastPitch.pitchData?.startSpeed ? `${lastPitch.pitchData.startSpeed.toFixed(1)} mph` : '--'}</span>
+              <span>Spin Rate:  {lastPitch.pitchData?.breaks?.spinRate ? `${lastPitch.pitchData.breaks.spinRate} rpm` : '--'}</span>
             </div>
           </div>
         )}
