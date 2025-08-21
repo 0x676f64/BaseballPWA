@@ -599,7 +599,7 @@
 }
 
 .light .gamebox-header {
-  background: rgba(255, 255, 255, 0.8);
+  background: #041e42;
   border: 1px solid rgba(203, 213, 225, 0.5);
 }
 
@@ -629,7 +629,7 @@
 
 .light .back-button {
   background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
+  color: #f7fafcff;
   border: 1px solid rgba(59, 130, 246, 0.2);
 }
 
@@ -642,6 +642,10 @@
   display: flex;
   flex-direction: column;
   gap: 0.25rem;
+}
+
+.light .game-title {
+  color: #ffffff;
 }
 
 .game-title span:first-child {
@@ -672,8 +676,8 @@
 }
 
 .light .score-display {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(203, 213, 225, 0.5);
+  background: #f7fafcff;
+  border: 1px solid rgba(59, 131, 246, 0.39);
 }
 
 .team-section-score {
@@ -688,10 +692,18 @@
   height: 70px;
 }
 
-.team-record-score {
+.light .team-record-score {
   font-size: 0.875rem;
   font-weight: 600;
   opacity: 0.7;
+  color: #041e42;
+}
+
+.dark .team-record-score {
+  font-size: 0.875rem;
+  font-weight: 600;
+  opacity: 0.7;
+  color: #f7fafcff;
 }
 
 .scores-container {
@@ -711,6 +723,10 @@
   color: #ee1552d2;
 }
 
+.light .score {
+  color: #0252bb;
+}
+
 .away-score {
   text-align: right;
 }
@@ -722,8 +738,8 @@
 .score-separator {
   font-size: 2rem;
   font-weight: bold;
-  opacity: 0.5;
   line-height: 1;
+  color: #ee1552d2;
 }
 
 /* Tabs */
@@ -742,7 +758,7 @@
 }
 
 .light .tabs-container {
-  background: rgba(255, 255, 255, 0.8);
+  background: #041e41;
   border: 1px solid rgba(203, 213, 225, 0.5);
 }
 
@@ -774,7 +790,7 @@
 
 .light .tab {
   background: transparent;
-  color: #64748b;
+  color: #ffffff;
 }
 
 .light .tab:hover {
@@ -783,7 +799,7 @@
 }
 
 .light .tab.active {
-  background: #3b82f6;
+  background: #bf0d3e;
   color: white;
   box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3);
 }
@@ -1161,14 +1177,23 @@
 
 /* Scorebug */
 .scorebug-section {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 2rem;
+    flex: 2;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    position: relative;
+    width: 100%;
+    /* Move up 50px using margin instead of transform */
+    margin-top: -40px;
+    /* Ensure it doesn't interfere with other elements */
+    z-index: 10;
 }
 
 .bases-outs-svg-box {
-  width: 120px;
-  height: 160px;
+    width: 100px; /* Reduced from 80px to fit better between containers */
+    height: 100px; /* Reduced proportionally */
+    /* Additional centering if needed */
+    margin: 0 auto;
 }
 
 .dark .out-circle {
@@ -1213,15 +1238,14 @@
 
 /* Current Pitch */
 .current-pitch {
-  margin-bottom: 2rem;
-  padding: 1rem;
+  padding: 0.475rem;
   border-radius: 0.5rem;
   text-align: center;
 }
 
 .dark .current-pitch {
-  background: rgba(51, 65, 85, 0.5);
-  border: 1px solid rgba(71, 85, 105, 0.3);
+  background: transparent;
+  border: 1px solid #ff1155a8;
 }
 
 .light .current-pitch {
@@ -1229,36 +1253,31 @@
   border: 1px solid rgba(226, 232, 240, 0.5);
 }
 
-.current-pitch h4 {
-  margin-bottom: 1rem;
-  color: #3b82f6;
-  font-weight: 600;
-}
-
 .pitch-info {
   display: flex;
   justify-content: center;
-  gap: 2rem;
+  gap: 5rem;
   flex-wrap: wrap;
 }
 
 .pitch-info span {
   padding: 0.5rem 1rem;
   border-radius: 0.5rem;
-  background: rgba(59, 130, 246, 0.1);
-  color: #3b82f6;
-  font-weight: 600;
-  font-size: 0.875rem;
+  background: #142c4c5d;
+  color: #f7fafcff;
+  font-weight: 700;
+  font-size: 0.800rem;
 }
 
 /* Pitch by Pitch */
 .pitch-by-pitch {
   padding: 1rem;
   border-radius: 0.5rem;
+  margin-top: 2rem;
 }
 
 .dark .pitch-by-pitch {
-  background: rgba(51, 65, 85, 0.3);
+  background: rgba(5, 30, 67, 1);
   border: 1px solid rgba(71, 85, 105, 0.2);
 }
 
@@ -1269,7 +1288,7 @@
 
 .pitch-by-pitch h4 {
   margin-bottom: 1rem;
-  color: #3b82f6;
+  color: #fc1355;
   font-weight: 600;
 }
 
@@ -1286,13 +1305,14 @@
   align-items: flex-start;
   gap: 1rem;
   padding: 1rem;
-  border-radius: 0.5rem;
+  border-radius: 0.8rem;
   transition: all 0.2s ease;
 }
 
 .dark .play-item {
-  background: rgba(71, 85, 105, 0.3);
-  border: 1px solid rgba(100, 116, 139, 0.2);
+  background: #0252bb38;
+  border-left: 4px solid #bf0d3e;
+  border-bottom: 1px solid #bf0d3e;
 }
 
 .dark .play-item:hover {
@@ -1312,7 +1332,7 @@
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  border: 2px solid #3b82f6;
+  border: 2px solid #fc1355;
   flex-shrink: 0;
 }
 
@@ -1324,9 +1344,14 @@
 }
 
 .play-result {
-  font-weight: 600;
-  color: #3b82f6;
+  color: #fc1355;
   font-size: 0.875rem;
+  border: 3px solid #fc1355;
+  border-radius: 20px;
+  padding: 0.1rem 1rem; /* Add horizontal padding for better appearance */
+  font-weight: 700;
+  display: inline-block;
+  width: fit-content; /* This will make it only as wide as the content */
 }
 
 .play-description {
@@ -1334,12 +1359,20 @@
   opacity: 0.8;
 }
 
+.dark .play-description {
+  color: #f7fafcff;
+}
+
 .hit-data {
   display: flex;
   gap: 1rem;
-  font-size: 0.75rem;
-  font-weight: 500;
+  font-size: 1rem;
+  font-weight: 700;
   opacity: 0.7;
+}
+
+.dark .hit-data span {
+  color: #f7fafcff;
 }
 
 /* Post-Game Wrap Styles */
@@ -1361,18 +1394,20 @@
 }
 
 .dark .decision {
-  background: rgba(51, 65, 85, 0.5);
-  border: 1px solid rgba(71, 85, 105, 0.3);
+  background: rgba(5, 30, 67, 1);
+  border-left: 4px solid #f7fafcff;
+  border-bottom: 1px solid #f7fafcff;
 }
 
 .light .decision {
-  background: rgba(248, 250, 252, 0.8);
-  border: 1px solid rgba(226, 232, 240, 0.5);
+  background: linear-gradient(135deg, #f8f9fa, #d9e6f3ff);
+  border-left: 4px solid #bf0d3e;
+  border-bottom: 1px solid #bf0d3e;
 }
 
 .decision h4 {
   margin-bottom: 1rem;
-  color: #3b82f6;
+  color: #bf0d3e;
   font-weight: 600;
 }
 
@@ -1381,7 +1416,7 @@
   height: 80px;
   border-radius: 50%;
   margin-bottom: 1rem;
-  border: 3px solid #3b82f6;
+  border: 3px solid #bf0d3e;
 }
 
 .decision p {
@@ -1399,7 +1434,7 @@
   text-align: center;
   margin-bottom: 1.5rem;
   font-size: 1.25rem;
-  color: #3b82f6;
+  color: #bf0d3e;
   font-weight: 600;
 }
 
@@ -1416,21 +1451,23 @@
 }
 
 .dark .performer {
-  background: rgba(51, 65, 85, 0.3);
-  border: 1px solid rgba(71, 85, 105, 0.2);
+  background: rgba(5, 30, 67, 1);
+  border-left: 4px solid #f7fafcff;
+  border-bottom: 1px solid #f7fafcff;
 }
 
 .light .performer {
-  background: rgba(248, 250, 252, 0.5);
-  border: 1px solid rgba(226, 232, 240, 0.3);
+  background: linear-gradient(135deg, #f8f9fa, #d9e6f3ff);
+  border-left: 4px solid #bf0d3e;
+  border-bottom: 1px solid #bf0d3e;
 }
 
 .performer-image {
-  width: 60px;
-  height: 60px;
+  width: 64px;
+  height: 64px;
   border-radius: 50%;
   margin-bottom: 0.75rem;
-  border: 2px solid #3b82f6;
+  border: 2px solid #bf0d3e;
 }
 
 .performer p {
@@ -1440,7 +1477,7 @@
 
 .performer span {
   font-size: 0.875rem;
-  color: #3b82f6;
+  color: #bf0d3e;
   font-weight: 500;
 }
 
