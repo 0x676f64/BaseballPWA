@@ -71,10 +71,12 @@ const GameBox = ({ darkMode }) => {
     return `https://img.mlbstatic.com/mlb-photos/image/upload/d_people:generic:headshot:67:current.png/w_100,h_100,c_fill,q_auto:best/v1/people/${playerId}/headshot/67/current`;
   };
 
-  // Format batting average
+// Format batting average
   const formatAvg = (avg) => {
-    if (!avg && avg !== 0) return '.---';
-    return avg.toFixed(3).substring(1); // Remove leading 0
+    // Convert to number and check if it's valid
+    const numAvg = parseFloat(avg);
+    if (isNaN(numAvg)) return '.---';
+    return numAvg.toFixed(3).substring(1); // Remove leading 0
   };
 
   // Format ERA
